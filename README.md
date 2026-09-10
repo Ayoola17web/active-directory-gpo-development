@@ -19,7 +19,7 @@ The lab is hosted in Oracle VirtualBox using an isolated virtual network. The en
 
 ### 3.1 Lab Topology Diagram
 
-![03-1-lab-topology-virtualbox-manager](screenshots/03-1-lab-topology-virtualbox-manager.png)
+![03-1-lab-topology-virtualbox-manager](03-1-lab-topology-virtualbox-manager.png)
 
 ### 3.2 Virtual Machines & Roles
 
@@ -43,50 +43,35 @@ Windows Server 2022; Windows 8; Oracle VirtualBox; Active Directory Users and Co
 - Windows client version: 6.2.9200 (Build 9200)
 - Hypervisor: VirtualBox
 
-![Windows Server 2022 domain controller running in Oracle VirtualBox](screenshots/03-3-windows-server-version.png)
+![Windows Server 2022 domain controller running in Oracle VirtualBox](03-3-windows-server-version.png)
 
-![Windows 8 client running in Oracle VirtualBox](screenshots/03-3-windows-client-version.png)
+![Windows 8 client running in Oracle VirtualBox](03-3-windows-client-version.png)
 
 ## 4. Active Directory Installation & Domain Controller Promotion
 
 ### 4.1 Installing the AD DS Role
-![Domain controller promotion in progress](screenshots/04-2-promoting-to-dc-1.png)
+![Domain controller promotion in progress](04-2-promoting-to-dc-1.png)
 
 *Server Manager — Add Roles and Features*
 
 ### 4.2 Promoting to Domain Controller
 
-![Domain controller promotion in progress](screenshots/04-2-promoting-to-dc-1.png)
+![Domain controller promotion in progress](04-2-promoting-to-dc-1.png)
 
-![Domain controller promotion complete](screenshots/04-2-promoting-to-dc-2.png)
+![Domain controller promotion complete](04-2-promoting-to-dc-2.png)
 
 ### 4.3 Post-Promotion Verification
 
 Verification includes checking domain controller health with `dcdiag`, confirming the domain in ADUC, verifying DNS records, and confirming that the client can resolve and communicate with the domain controller.
 
-![Post-promotion domain controller verification](screenshots/04-3-post-promotion-verification.png)
-
----
-
-## 
+![Post-promotion domain controller verification](04-3-post-promotion-verification.png)
 
 This three-OU design keeps identity objects logically separated and makes GPO targeting, administration, and future delegation easier.
 
 ### 5.2 OU Layout in ADUC
 
-![OU layout in Active Directory Users and Computers](screenshots/05-2-ou-layout-in-aduc.png)
+![OU layout in Active Directory Users and Computers](05-2-ou-layout-in-aduc.png)
 
-
-### 6.1 Naming Convention & UPN Standard
-
-- **Naming convention:** first name.last name
-- **UPN suffix:** apexsecure.tech
-- **Computer naming convention:** `APEX-<ROLE>-<NUMBER>`
-- **Example user:** `john.doe@apexsecure.local`
-
-### 6.2 Group Structure per OU
-
-Recommended security groups include: `GG-Abuja-IT`, `GG-Abuja-Finance`, `GG-Abuja-HR`, `GG-Abuja-Operations`, `GG-IT-Admins`, and `GG-Helpdesk`. Global security groups represent business roles and are used to control access to resources.
 
 | Group Name | Type/Scope | OU | Purpose |
 |---|---|---|---|
@@ -94,7 +79,7 @@ Recommended security groups include: `GG-Abuja-IT`, `GG-Abuja-Finance`, `GG-Abuj
 | GG-Abuja-Finance | Security / Global | Abuja/Users/Finance | Finance role access |
 | GG-Abuja-HR | Security / Global | Abuja/Users/HR | HR role access |
 
-![Security group structure per OU](screenshots/06-2-group-structure-per-ou.png)
+![Security group structure per OU](06-2-group-structure-per-ou.png)
 
 ### 6.3 Full User Provisioning Register
 
@@ -120,13 +105,12 @@ A total of 12 fictional lab users is provisioned, with three users assigned to e
 | james.obi | James Obi | Operations | Abuja/Users/Operations |
 | esther.ugo | Esther Ugo | Operations | Abuja/Users/Operations |
 
-![Full user provisioning register in ADUC](screenshots/06-3-user-provisioning-register.png)
+![Full user provisioning register in ADUC](06-3-user-provisioning-register.png)
 
 ---
 
 ## 7. Group Policy Object (GPO) Design & Implementation
 
-GPOs are used to enforce consistent security controls across domain users and computers. The project separates the default domain password policy from workstation hardening and department-specific restrictions so that each policy has a clear purpose and scope.
 
 ### 7.1 Default Domain Password Policy GPO
 
@@ -141,19 +125,19 @@ GPOs are used to enforce consistent security controls across domain users and co
 
 These settings strengthen authentication and reduce the likelihood of successful password guessing while keeping the policy practical for a simulated enterprise environment.
 
-![Default domain password policy GPO settings](screenshots/07-1-default-domain-password-policy-1.png)
+![Default domain password policy GPO settings](07-1-default-domain-password-policy-1.png)
 
-![Default domain password policy GPO — account lockout settings](screenshots/07-1-default-domain-password-policy-2.png)
+![Default domain password policy GPO — account lockout settings](07-1-default-domain-password-policy-2.png)
 
 ### 7.2 Restricted Access GPO — Control Panel & CMD Lockdown
 
 A restricted-user GPO is linked to the appropriate user OU. It prevents standard users from accessing selected administrative interfaces such as Control Panel and Command Prompt. The purpose is to reduce unnecessary local administrative capability and demonstrate policy-based access restriction.
 
-![Restricted access GPO configuration](screenshots/07-2-restricted-access-gpo-1.png)
+![Restricted access GPO configuration](07-2-restricted-access-gpo-1.png)
 
-![Restricted access GPO linked to user OU](screenshots/07-2-restricted-access-gpo-2.png)
+![Restricted access GPO linked to user OU](07-2-restricted-access-gpo-2.png)
 
-![Restricted access GPO verification](screenshots/07-2-restricted-access-gpo-3.png)
+![Restricted access GPO verification](07-2-restricted-access-gpo-3.png)
 
 ### 7.3 Additional GPOs — IAM Security Hardening
 
@@ -171,7 +155,7 @@ Proposed hardening GPOs:
 | Windows Defender Baseline | Defender enabled; security notifications | Abuja/Computers | Endpoint hardening |
 | Audit Policy Baseline | Logon, account management and policy-change auditing | Domain/Computers | Security monitoring |
 
-![Additional IAM security hardening GPOs](screenshots/07-3-additional-gpos-hardening.png)
+![Additional IAM security hardening GPOs](07-3-additional-gpos-hardening.png)
 
 ---
 
@@ -179,9 +163,9 @@ Proposed hardening GPOs:
 
 GPO scope is controlled primarily through OU linking and security filtering. For example, department-specific policies can be linked to the relevant user OU, while administrative policies are limited to approved security groups. `gpresult /r` is used on the client to verify which policies were actually applied.
 
-![GPO security filtering configuration](screenshots/08-gpo-security-filtering-1.png)
+![GPO security filtering configuration](08-gpo-security-filtering-1.png)
 
-![gpresult /r output on the domain-joined client](screenshots/08-gpo-security-filtering-2.png)
+![gpresult /r output on the domain-joined client](08-gpo-security-filtering-2.png)
 
 ---
 
@@ -193,21 +177,21 @@ The JML process provides a repeatable approach to identity lifecycle management.
 
 Create the user account, populate required attributes, place the account in the correct OU, assign the appropriate security groups, apply the standard password policy, and verify successful domain authentication.
 
-![Joiner — new user onboarding](screenshots/09-1-joiner-new-user-onboarding.png)
+![Joiner — new user onboarding](09-1-joiner-new-user-onboarding.png)
 
 ### 9.2 Mover — Department/OU Transfer
 
 When a user changes department, move the account to the new OU, remove obsolete role groups, add the new approved role groups, and verify the resulting GPO and access scope.
 
-![Mover — department/OU transfer](screenshots/09-2-mover-department-transfer.png)
+![Mover — department/OU transfer](09-2-mover-department-transfer.png)
 
 ### 9.3 Leaver — Offboarding & Deprovisioning
 
 Disable the account, remove unnecessary group memberships, document the action, and retain the account in an appropriate disabled-user location according to the organisation's retention process. This prevents continued access after employment ends.
 
-![Leaver — account disabled](screenshots/09-3-leaver-offboarding-1.png)
+![Leaver — account disabled](09-3-leaver-offboarding-1.png)
 
-![Leaver — offboarding verification](screenshots/09-3-leaver-offboarding-2.png)
+![Leaver — offboarding verification](09-3-leaver-offboarding-2.png)
 
 ---
 
@@ -221,9 +205,9 @@ AD Certificate Services (AD CS) is considered as a future enhancement to the lab
 
 The lab simulates common IAM service requests and incidents, including account lockout and password reset. Each event is recorded with the request, action taken, verification result, and closure status.
 
-![IAM service request — account lockout](screenshots/11-iam-incident-service-request-1.png)
+![IAM service request — account lockout](11-iam-incident-service-request-1.png)
 
-![IAM service request — password reset](screenshots/11-iam-incident-service-request-2.png)
+![IAM service request — password reset](11-iam-incident-service-request-2.png)
 
 | Ticket # | Issue | Resolution | Date |
 |---|---|---|---|
