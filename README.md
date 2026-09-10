@@ -1,4 +1,4 @@
-![image alt(https://raw.githubusercontent.com/Ayoola17web/active-directory-gpo-development/286da931556525945a3437c52ee0a6db3162c229/03-1-lab-topology-virtualbox-manager.png)
+
  Hello, I'm AYOOLA
 # Active Directory & GPO Deployment Project
 
@@ -68,7 +68,7 @@ The lab is hosted in Oracle VirtualBox using an isolated virtual network. The en
 
 ### 3.1 Lab Topology Diagram
 
-![Oracle VirtualBox Manager](screenshots/03-1-lab-topology-virtualbox-manager.png)
+![03-1-lab-topology-virtualbox-manager](screenshots/03-1-lab-topology-virtualbox-manager.png)
 
 ### 3.2 Virtual Machines & Roles
 
