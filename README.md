@@ -43,8 +43,11 @@ Windows Server 2022; Windows 8; Oracle VirtualBox; Active Directory Users and Co
 - Windows client version: 6.2.9200 (Build 9200)
 - Hypervisor: VirtualBox
 
+
+ ## Window server properties
 ![Windows Server 2022 domain controller running in Oracle VirtualBox](03-3-windows-server-version.png)
 
+## client windows 8 properties
 ![Windows 8 client running in Oracle VirtualBox](03-3-windows-client-version.png)
 
 ## 4. Active Directory Installation & Domain Controller Promotion
