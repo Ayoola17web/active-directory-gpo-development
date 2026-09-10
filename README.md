@@ -13,7 +13,12 @@ My journey in IT has led me to develop a passion for cybersecurity, and I am now
 
 | Skill                                         | Associated Project         |
 |-----------------------------------------------|----------------------------|
-| SIEM Implementation and Log Analysis          | <a href="https://google.com">Detection Lab</a>|
+| SIEM Implementation and Log Analysis           | <a href="https://google.com">Detection Lab</a>|  
+| Cloud Security                                 | AWS Cloud Security & IAM Monitoring Project
+| Vulnerability Management                       | Vulnerability Management & Security Assessment Project        
+| IAM                                            | Active directory (ADDS)
+| AI & API Security                              |  AI & API Security Assessment Project      
+| Detection Engineering                          | Detection Engineering & Threat Detection Project 
 | Network Traffic Monitoring and Attack Detection | <a href="https://google.com">Detection Lab</a>|
 | Security Automation with Shuffle SOAR         | SOC Automation Lab|
 | Incident Response Planning and Execution      | SOC Automation Lab|
@@ -45,5 +50,7 @@ My journey in IT has led me to develop a passion for cybersecurity, and I am now
 
 
 ## Projects
+- ACTIVE DIRECTORY IAM LAB
+- AWS IAM ON CLOUD
 - Detection Lab
 - SOC Automation Project
