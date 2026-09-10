@@ -1,5 +1,131 @@
 
  Hello, I'm AYOOLA
+# Active Directory & GPO Deployment Project
+
+**IAM / Systems Administration Portfolio Documentation**
+
+Prepared by: **Moses Shadrach Ayoola**
+Date: *22 August 2026*
+Version: *v1.0*
+
+---
+
+## Table of Contents
+
+1. [Executive Summary](#1-executive-summary)
+2. [Project Overview & Objectives](#2-project-overview--objectives)
+3. [Environment & Infrastructure](#3-environment--infrastructure)
+4. [Active Directory Installation & Domain Controller Promotion](#4-active-directory-installation--domain-controller-promotion)
+5. [Organisational Unit (OU) Design](#5-organisational-unit-ou-design)
+6. [Identity Lifecycle — User & Group Provisioning](#6-identity-lifecycle--user--group-provisioning)
+7. [Group Policy Object (GPO) Design & Implementation](#7-group-policy-object-gpo-design--implementation)
+8. [GPO Security Filtering & Scope Management](#8-gpo-security-filtering--scope-management)
+9. [Identity Lifecycle Management (Joiner / Mover / Leaver)](#9-identity-lifecycle-management-joiner--mover--leaver)
+10. [AD Certificate Services — Overview & Relevance](#10-ad-certificate-services--overview--relevance)
+11. [IAM Incident & Service Request Management](#11-iam-incident--service-request-management)
+12. [Key Competencies Demonstrated](#12-key-competencies-demonstrated)
+13. [References & Tools](#13-references--tools)
+
+---
+
+## 1. Executive Summary
+
+This project presents the design and implementation of a simulated enterprise Identity and Access Management (IAM) environment using Microsoft Active Directory Domain Services (AD DS) and Group Policy. The environment was developed for **ApexSecure Technologies**, a fictional organisation, with the objective of demonstrating how a cybersecurity administrator can centrally manage identities, authentication, access control, and security policies.
+
+The implementation includes deployment of a Windows Server domain controller, creation of the domain, structured Organisational Units (OUs), security groups, user accounts, and security-focused Group Policy Objects (GPOs). The project also demonstrates Identity Lifecycle Management through Joiner, Mover, and Leaver processes, together with security filtering, password controls, account lockout policies, and simulated IAM service requests.
+
+The final environment provides a practical demonstration of centralised identity administration, least-privilege access, policy enforcement, and repeatable account lifecycle procedures. All identities and infrastructure used in this project are fictional and are intended solely for an isolated cybersecurity laboratory.
+
+---
+
+## 2. Project Overview & Objectives
+
+The project simulates the IAM environment of ApexSecure Technologies, a fictional technology organisation. The goal is to build a manageable Active Directory structure that supports secure identity administration while demonstrating practical cybersecurity controls. The implementation is performed in an isolated VirtualBox lab.
+
+### 2.1 Scenario
+
+**Scenario:** Enterprise
+
+ApexSecure Technologies requires centralised identity management for staff in its Abuja office. The organisation needs controlled user provisioning, department-based access, strong authentication policies, account lockout controls, and repeatable onboarding and offboarding procedures.
+
+### 2.2 Objectives
+
+- **Deploy a functional Active Directory environment** — install AD DS and promote a server to Domain Controller to support centralised identity management for a simulated Finance department
+- **Enforce security baselines through Group Policy** — implement password, account lockout, and access-restriction policies scoped to Finance staff to reduce the risk of unauthorised access
+- **Demonstrate identity lifecycle management** — provision users and groups following a consistent naming convention, and verify policy enforcement by testing as an end user on a domain-joined client
+
+### 2.3 Scope
+
+**In scope:** Windows Server AD DS deployment, domain controller promotion, DNS integration, OU design, security groups, user provisioning, Group Policy, security filtering, JML lifecycle processes, account lockout and password controls, and simulated IAM service requests.
+
+**Out of scope:** production deployment, real employee data, cloud identity integration, internet-facing services, and connection to a real corporate network.
+
+---
+
+## 3. Environment & Infrastructure
+
+The lab is hosted in Oracle VirtualBox using an isolated virtual network. The environment contains a Windows Server domain controller and a Windows client used to test domain authentication and Group Policy application.
+
+### 3.1 Lab Topology Diagram
+
+![Oracle VirtualBox Manager](screenshots/03-1-lab-topology-virtualbox-manager.png)
+
+### 3.2 Virtual Machines & Roles
+
+- **Domain Controller:** APEX-DC01 — Windows Server 2022 — `192.168.10.10`
+- **Client:** APEX-CLIENT01 — Windows 11 Pro — `192.168.10.20`
+- **DNS:** Hosted on APEX-DC01
+- **Domain:** apexsecure.tech
+- **NetBIOS name:** APEXSECURE
+- **Virtualisation platform:** Oracle VirtualBox
+
+| VM Name | Role | OS | IP Address |
+|---|---|---|---|
+| APEX-DC01 | Domain Controller / DNS | Windows Server 2022 | 192.168.10.10 |
+| APEX-CLIENT01 | Domain-joined Client | Windows 8 | 192.168.10.20 |
+
+### 3.3 Software & Tool Versions
+
+Windows Server 2022; Windows 8; Oracle VirtualBox; Active Directory Users and Computers (ADUC); Group Policy Management Console (GPMC); PowerShell; Windows Event Viewer; `dcdiag`; `gpresult`.
+
+- Windows Server version: 10.0.20348 (Build 20348)
+- Windows client version: 6.2.9200 (Build 9200)
+- Hypervisor: VirtualBox
+
+![Windows Server 2022 domain controller running in Oracle VirtualBox](screenshots/03-3-windows-server-version.png)
+
+![Windows 8 client running in Oracle VirtualBox](screenshots/03-3-windows-client-version.png)
+
+---
+
+## 4. Active Directory Installation & Domain Controller Promotion
+
+AD DS is installed on APEX-DC01 and the server is promoted to the first domain controller for the new forest. DNS is installed as part of the domain controller deployment. After promotion, ADUC, DNS Manager, GPMC, and command-line verification tools are used to confirm that the domain is functioning correctly.
+
+### 4.1 Installing the AD DS Role
+
+*Server Manager — Add Roles and Features*
+
+### 4.2 Promoting to Domain Controller
+
+![Domain controller promotion in progress](screenshots/04-2-promoting-to-dc-1.png)
+
+![Domain controller promotion complete](screenshots/04-2-promoting-to-dc-2.png)
+
+### 4.3 Post-Promotion Verification
+
+Verification includes checking domain controller health with `dcdiag`, confirming the domain in ADUC, verifying DNS records, and confirming that the client can resolve and communicate with the domain controller.
+
+![Post-promotion domain controller verification](screenshots/04-3-post-promotion-verification.png)
+
+---
+
+## 5. Organisational Unit (OU) Design
+
+The OU design uses three primary organisational containers for the Abuja office: **Users**, **Groups**, and **Computers**. This separation supports clear administrative boundaries, targeted Group Policy application, and easier identity and access management. Departmental user accounts are organised under the Users OU, security groups are maintained under the Groups OU, and domain-joined workstation accounts are maintained under Computers.
+
+### 5.1 OU Structure Diagram / Rationale
+
 
 The three primary OUs under the Abuja organisational structure are:
 
