@@ -1,56 +1,24 @@
 
  Hello, I'm AYOOLA
-<a href="https://linkedin.com/linkedin.com/in/moses-shadrach-b8145a240"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-
-I am a recent graduate with a profound interest in technology and a dedication to solving complex problems.
+ <h2>Cybersecurity project</h2>
+ <h3>Active directory IAM Lab</h3>
 
 ## Objective
 
 
-My journey in IT has led me to develop a passion for cybersecurity, and I am now eager to transition into this field, specifically aiming to join a Security Operations Center (SOC) as a Tier 1 Analyst.
-
-## Skills
-
-| Skill                                         | Associated Project         |
-|-----------------------------------------------|----------------------------|
-| SIEM Implementation and Log Analysis           | <a href="https://google.com">Detection Lab</a>|  
-| Cloud Security                                 | AWS Cloud Security & IAM Monitoring Project
-| Vulnerability Management                       | Vulnerability Management & Security Assessment Project        
-| IAM                                            | Active directory (ADDS)
-| AI & API Security                              |  AI & API Security Assessment Project      
-| Detection Engineering                          | Detection Engineering & Threat Detection Project 
-| Network Traffic Monitoring and Attack Detection | <a href="https://google.com">Detection Lab</a>|
-| Security Automation with Shuffle SOAR         | SOC Automation Lab|
-| Incident Response Planning and Execution      | SOC Automation Lab|
-| Case Management with TheHive                  | SOC Automation Lab|
-| Scripting and Automation for Threat Mitigation | SOC Automation Lab|
+This project presents the design and implementation of a simulated enterprise Identity and Access Management (IAM) environment using Microsoft Active Directory Domain Services (AD DS) and Group Policy. The environment was developed for ApexSecure Technologies, a fictional organisation, with the objective of demonstrating how a cybersecurity administrator can centrally manage identities, authentication, access control, and security policies.
+## Technology used
 
 ## Tools
 
-### Network
-<div>
-    <img src="https://img.shields.io/badge/-Wireshark-1679A7?&style=for-the-badge&logo=Wireshark&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Suricata-EF3B2D?&style=for-the-badge&logo=Suricata&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Zeek-777BB4?&style=for-the-badge&logo=Zeek&logoColor=white" />
-</div>
-
-### Endpoint
-<div>
-    <img src="https://img.shields.io/badge/-Microsoft_Defender_for_Endpoint-00A4EF?&style=for-the-badge&logo=Microsoft&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Velociraptor-4B275F?&style=for-the-badge&logo=Velociraptor&logoColor=white" />
-</div>
-
-### SIEM
-<div>
-    <img src="https://img.shields.io/badge/-Microsoft_Sentinel-0078D4?&style=for-the-badge&logo=Microsoft&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Splunk-000000?&style=for-the-badge&logo=Splunk&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Elastic-005571?&style=for-the-badge&logo=Elastic&logoColor=white" />
-</div>
+- Oracle VirtualBox
+- Windows Server 2022 Standard Evaluation (Desktop Experience)
+- Windows Client VM
+- Active Directory Domain Services (AD DS)
+- Active Directory Users and Computers (ADUC)
+- Group Policy Management
+- PowerShell
 
 
+##Program walk through
 
-## Projects
-- ACTIVE DIRECTORY IAM LAB
-- AWS IAM ON CLOUD
-- Detection Lab
-- SOC Automation Project
